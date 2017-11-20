@@ -2,7 +2,7 @@
   "name": "react-native-cardstack",
   "version": "1.0.1",
   "description": "react native component inspired by the iOS passbook app UI",
-  "main": "dist/index.js",
+  "main": "index.js",
   "keywords": [
     "update",
     "react-native",
