@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, LayoutAnimation, StyleSheet } from 'react-native';
 import calcHeight from './lib/calcHeight';
+import { UIManager, Platform } from 'react-native';
 
 const { Types, Properties } = LayoutAnimation;
 
@@ -10,6 +11,11 @@ const LONG_PRESS_THROTTLE = 400;
 export default class CardStack extends React.Component {
 	constructor (props) {
 		super();
+
+	    if (Platform.OS === 'android') {
+	      UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+	    }
+
 		const childrenLength = props.children && props.children.length || 1;
 		if (childrenLength <= 1) throw new Error(ERROR_MESSAGE);
 
@@ -113,7 +119,7 @@ CardStack.propTypes = {
 CardStack.defaultProps = {
 	height: 600,
 	width: 350,
-	backgroundColor: 'f8f8f8',
+	backgroundColor: '#f8f8f8',
 	hoverOffset: 30,
 	transitionDuration: 300,
 };
